@@ -8,8 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class konverteringer extends Model
 {
     use HasFactory;
+    
+    protected $table = 'konverteringer';
 
-    public function romertall(){
+    protected $fillable = [
+        'integertall',
+        'romertall'
+
+    ];
+
+   /*  public function romertall(){
         return $this->belongsTo(Romertall::class);
-    }
+    } */
 }

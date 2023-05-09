@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('romertalls', function (Blueprint $table) {
+        Schema::create('konverteringer', function (Blueprint $table) {
             $table->id();
             $table->string('romertall');
-            $table->integer('integertall');
+            $table->string('integertall');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('romertalls');
+        Schema::dropIfExists('konverteringer');
     }
 };

@@ -1,10 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Models\konverteringer;
-use App\Http\Requests\StorekonverteringerRequest;
+use Illuminate\Http\Request;
 use App\Http\Requests\UpdatekonverteringerRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\V1\KonverteringerResource;
+use App\Http\Resources\V1\KonverteringerCollection;
+use App\Http\Requests\V1\StoreKonverteringerRequest;
+use App\Http\Controllers\Api\V1\KonverteringerController;
 
 class KonverteringerController extends Controller
 {
@@ -13,7 +18,16 @@ class KonverteringerController extends Controller
      */
     public function index()
     {
-        //
+        return new KonverteringerCollection(Konverteringer::all());
+    }
+    
+    public function historikk(Request $request)
+    {   
+        // Default items per page 
+        $perPage = $request->input('per_page', 15); 
+        $konverteringer = new KonverteringerCollection(Konverteringer::orderBy('created_at', 'desc')->paginate($perPage));
+    
+        return response()->json($konverteringer);
     }
 
     /**
@@ -29,7 +43,7 @@ class KonverteringerController extends Controller
      */
     public function store(StorekonverteringerRequest $request)
     {
-        //
+        return new KonverteringerResource(Konverteringer::create($request->all()));
     }
 
     /**
@@ -37,7 +51,7 @@ class KonverteringerController extends Controller
      */
     public function show(konverteringer $konverteringer)
     {
-        //
+        return new KonverteringerResource($konverteringer);
     }
 
     /**

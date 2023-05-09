@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Romertall;
+use App\Models\Konverteringer;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            RomertallSeeder::class
+            KonverteringerSeeder::class
         ]);
     }
 }

@@ -40,11 +40,9 @@ class KonverteringerFactory extends Factory
     $randomRoman = $this->faker->randomElement(array_keys($romanNumerals));
     $correspondingInteger = $romanNumerals[$randomRoman];
 
-        return [
-            'romertall_id' => Romertall::factory(),
+        return [       
             'romertall' => $randomRoman,
             'integertall' => $correspondingInteger,
-            'opprettet_kl' => $this->faker->dateTime()
         ];
     }
 }
