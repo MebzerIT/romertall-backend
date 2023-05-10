@@ -17,7 +17,4 @@ class konverteringer extends Model
 
     ];
 
-   /*  public function romertall(){
-        return $this->belongsTo(Romertall::class);
-    } */
 }
