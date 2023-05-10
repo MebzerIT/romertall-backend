@@ -29,7 +29,8 @@ class RomertallController extends Controller
                 $integer = $this->romanToInt($roman);
                 $konvertering = Konverteringer::create(['romertall' => $roman, 'integertall' => $integer]);
             } else {
-                $integer = $konvertering->integer;
+               // $integer = $konvertering->integer;
+                $integer = $konvertering->integertall;
             }
             // Cache the result for 1 hour
             Cache::put($roman, $integer, 60 * 60); 
@@ -40,6 +41,7 @@ class RomertallController extends Controller
 
     private function romanToInt($roman)
     {
+        
         $values = [
             'I' => 1,
             'V' => 5,
