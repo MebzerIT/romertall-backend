@@ -24,7 +24,7 @@ class KonverteringerController extends Controller
     public function historikk(Request $request)
     {   
         // Default items per page 
-        $perPage = $request->input('per_page', 15); 
+        $perPage = $request->input('per_page', 7); 
         $konverteringer = new KonverteringerCollection(Konverteringer::orderBy('created_at', 'desc')->paginate($perPage));
     
         return response()->json($konverteringer);

@@ -14,7 +14,11 @@ class RomertallController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-    {
+    {  
+        $request->validate([
+            'parma' => 'required|regex:/^[IVXLCDM]+$/',
+        ]);
+        
         $roman = $request->input('parma');
 
         //check if the value is on cache
@@ -29,7 +33,6 @@ class RomertallController extends Controller
                 $integer = $this->romanToInt($roman);
                 $konvertering = Konverteringer::create(['romertall' => $roman, 'integertall' => $integer]);
             } else {
-               // $integer = $konvertering->integer;
                 $integer = $konvertering->integertall;
             }
             // Cache the result for 1 hour
@@ -41,7 +44,6 @@ class RomertallController extends Controller
 
     private function romanToInt($roman)
     {
-        
         $values = [
             'I' => 1,
             'V' => 5,
