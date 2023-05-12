@@ -23,10 +23,10 @@ class Konvertering_Historikk_Api_Test extends TestCase
         $response->assertJsonStructure([
             'data' => [
                 '*' => [
-                    'id',
+                    "id",
                     'romertall',
                     'integertall',
-                    'oppretetKl',
+                    'opprettetKl',
                 ]
             ]
         ]);

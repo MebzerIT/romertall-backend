@@ -23,7 +23,8 @@ class Romertall_Konvertering_Test extends TestCase {
     public function test_romanNumeral_to_integer_conversion_api_with_invalid_input() {
        
         $response = $this->get('http://localhost:8000/api/v1/romertall?parma=ABCD');
-
+        
+        dd();
         $response->assertStatus(422);
         $response->assertJson([
             'message' => 'The given data was invalid.',
